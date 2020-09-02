@@ -1,5 +1,5 @@
 import pytest
-from domainmodel.director import Director;
+from domainmodel.director import Director
 
 @pytest.fixture
 def new_director():
