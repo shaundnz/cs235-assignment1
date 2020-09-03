@@ -54,9 +54,3 @@ class Filter:
                     result_set.append(self.create_movie_instance(row))
 
         return result_set
-
-f = Filter("C:\\Users\\Shaun\\Documents\\GDriveUoA\\2020\\Sem 2\\CompSci 235\\assignment-1\\datafiles\\Data1000Movies.csv")
-result_set = f.filter_movies(director="Taika")
-print(len(result_set))
-for result in result_set:
-    print(result)
