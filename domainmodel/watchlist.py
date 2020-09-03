@@ -1,22 +1,22 @@
 from domainmodel.movie import Movie
 
+
 class WatchList:
 
     def __init__(self):
         self.__watch_list = []
-        self.__current = -1;
-
+        self.__index = 0;
 
     def add_movie(self, movie):
-        if movie not in self.__watch_list:
+        if type(movie) is Movie and movie not in self.__watch_list:
             self.__watch_list.append(movie)
 
     def remove_movie(self, movie):
-        if movie in self.__watch_list:
+        if type(movie) is Movie and movie in self.__watch_list:
             self.__watch_list.remove(movie)
 
     def select_movie_to_watch(self, index):
-        if index < len(self.__watch_list):
+        if index < self.size():
             return self.__watch_list[index]
         else:
             return None
@@ -26,7 +26,7 @@ class WatchList:
 
     def first_movie_in_watchlist(self):
         if self.size() > 0:
-            return self.size()
+            return self.__watch_list[0]
         else:
             return None
 
@@ -34,13 +34,12 @@ class WatchList:
         return self
 
     def __next__(self):
-        if (self.__current < self.size()):
-            self.__current += 1
-            return self.__watch_list[self.__current]
-        else:
+        if (self.__index >= len(self.__watch_list)):
+            self.__index = 0
             raise StopIteration
-
-
+        index = self.__index
+        self.__index += 1
+        return self.__watch_list[index]
 
 
 wl = WatchList()
@@ -67,4 +66,5 @@ wl.add_movie(m3)
 for movie in wl:
     print(movie)
 
-
+for movie in wl:
+    print(movie)
